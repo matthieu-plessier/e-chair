@@ -84,7 +84,7 @@
         {
             "ref": 399566,
             "type": "cheval",
-            "weight": 300,
+            "weight": 200,
             "title": "ENTRECÔTE DE CHEVAL",
             "desc": "Nous vous proposons ici une entrecôte de cheval de race supérieure. Idéal pour une cuisson au grill ou avec des herbes de provence",
             "img_src": "/assets/img/entrecote_de_cheval.jpg",
@@ -97,16 +97,16 @@
             "title": "CÔTTELETTE DE CHEVAL",
             "desc": "Nous vous proposons ici une côttelette de cheval de race supérieure. Idéal pour une cuisson au grill.",
             "img_src": "/assets/img/cottelettes_de_cheval.jpg",
-            "price": 129
+            "price": 32.50
         },
         {
             "ref": 399566,
             "type": "cheval",
-            "weight": 300,
+            "weight": 500,
             "title": "ROSEBIF DE CHEVAL",
             "desc": "Nous vous proposons ici un rosebif de cheval de race supérieure. Idéal pour une cuisson au four ou avec un beurre persillé.",
             "img_src": "/assets/img/rosebif_de_cheval.jpg",
-            "price": 129
+            "price": 32.50
         }
     ]
 }
