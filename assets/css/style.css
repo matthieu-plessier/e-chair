@@ -1,0 +1,24 @@
+/* Début Navbar */
+.navbar {
+    background-color:#6c1d1c;
+    font-size: 30px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color:white !important;
+}
+
+.navbar a:hover {
+    color: black !important;
+}
+
+.nav-item {
+    border: solid 1px grey;
+    width: 200px;
+}
+
+.nav-item:hover {
+    background-color: white;
+}
+/* Fin navbar */
