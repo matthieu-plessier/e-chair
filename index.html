@@ -12,42 +12,51 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid p-0">
+        <!-- Début Navbar -->
+        
+        <!-- Modification avec bg-dark pour couleur boutton -->
+        <nav class="navbar navbar-expand-lg navbar-light navbar-dark color">
+            <!-- Modification padding -->
+            <div id="containerNav" class="container-fluid p-0">
+                <!-- Logo -->
+                <!-- Modification padding+margin-->
+                <a class="navbar-brand pe-2 m-0" href="#">E-Chair</a>
 
-        <nav class="navbar navbar-expand-lg navbar-light p-0 m-0">
-            <li class="nav-item">
-                <a class="nav-link" href="#">E-chair</a>
-            </li>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Boeuf</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Volaille</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Porc</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Cheval</a>
+                        </li>
 
-            <div class="collapse navbar-collapse p-0" id="navbarContent">
-                <ul class="navbar-nav w-100 justify-content-between p-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Boeuf</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Volailles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Porc</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Cheval</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Charcuterie</a>
-                    </li>
-                </ul>
-                <a href="#">
-                    <img alt="Panier pour règlement" src="assets/img/icons8-panier-2-64.png" width="35" height="35">
-                </a>
-               </div>
+                        <!-- Modification ajout fond transparent -->
+                        <li class="nav-item buy bg-transparent">
+                            <a class="nav-link" href="#">
+                                <img class="img" alt="Panier pour règlement" src="assets/img/icons8-panier-2-64.png" width="35"
+                                    height="35">
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
         </nav>
 
+        <!-- Fin Navbar -->
         <div id="home">
 
         </div>
