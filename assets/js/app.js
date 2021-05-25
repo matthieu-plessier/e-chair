@@ -16,9 +16,9 @@ btnBeef.addEventListener('click',function(){
         if(element.type == "boeuf") {
           productsEl.innerHTML += displayCard(element);
           }
-        });
-        addToCart();
       });
+        addToCart();
+    });
       
 })
 
@@ -87,7 +87,7 @@ const addToCart = () => {
 
   btnList.forEach(element => {
     element.addEventListener("click", function (e) {
-      
+      console.log("TEST")
       let datatest = e.target.dataset.ref;
       let testCart = false;
       fetch('/assets/data/products.json')
@@ -95,15 +95,18 @@ const addToCart = () => {
         .then((displayCards) => {
           displayCards.products.forEach((element) => {
             if (datatest == element.ref) {
+              console.log("DATA")
               collectionCart.forEach(verif => {
                 if (verif == element.ref) {
                   testCart = true;
                 }
               });
               if (testCart) {
+                
                 let quantityTest = document.getElementById(element.ref)
                 quantityTest.innerHTML++;
               }else {
+                console.log("CREATION")
                 if (nullCart) {
                   modalEl.innerHTML = "";
                   nullCart = false;
