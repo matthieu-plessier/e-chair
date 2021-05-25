@@ -116,13 +116,15 @@ const addToCart = () => {
                   <img src="${element.img_src}" width="50px">
                   <p class="mr-5"> ${element.title} <br> ${element.price} € / KG </p>
                   <div class="d-flex ml-5">
-                    <p>quantité : <span id="${element.ref}">1</span></p>
-                    <button> + </button>
+                    
+                    <p>quantité : <button> - </button> <span id="${element.ref}">1 </span><button class="btnPlus" data-ref="${element.ref}"> + </button></p>
+                    
                   </div>
                   
                 </div>
                 `;
                 collectionCart.push(element.ref);
+                addQuantity(element);
               }
             }
           });
@@ -131,5 +133,13 @@ const addToCart = () => {
   });
 }
 
+//AJOUT DE QUANTITE
+const addQuantity = (element) => {
+  let btnPlus = document.querySelector(".btnPlus");
 
  
+  btnPlus.addEventListener("click", function(){
+    let quantityTest = document.getElementById(element.ref)
+    quantityTest.innerHTML++;
+  });
+}
