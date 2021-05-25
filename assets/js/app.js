@@ -1,3 +1,5 @@
+// Fonction affichage
+
 let productsEl = document.getElementById('cardsProducts');
 var collectionCart = [];
 var nullCart = true;
@@ -6,6 +8,7 @@ let btnPoultry = document.getElementById('poultry');
 let btnPork = document.getElementById('pork');
 let btnHorse = document.getElementById('horse');
 
+// bouton menu boeuf
 
 btnBeef.addEventListener('click',function(){
   productsEl.innerHTML = "";
@@ -21,6 +24,7 @@ btnBeef.addEventListener('click',function(){
     });
       
 })
+// bouton menu volaille
 
 btnPoultry.addEventListener('click',function(){
   productsEl.innerHTML = "";
@@ -36,6 +40,7 @@ btnPoultry.addEventListener('click',function(){
           });
           
 })
+// bouton menu porc
 
 btnPork.addEventListener('click',function(){
   productsEl.innerHTML = "";
@@ -51,6 +56,7 @@ btnPork.addEventListener('click',function(){
         });
         
 }) 
+// bouton menu cheval
 
 btnHorse.addEventListener('click',function(){
   productsEl.innerHTML = "";
@@ -66,9 +72,10 @@ btnHorse.addEventListener('click',function(){
         });
         
 }) 
+// fonction affichage d'une carte
 
 const displayCard = (element)=>{
-  let card = `<div class="col-4 card mt-4 mb-4" style="width: 20rem;height:32rem;"><div class="">
+  let card = `<div class="col-4 card ml-2 mt-4 mb-4" style="width: 20rem;height:32rem;"><div class="">
     <img src="${element.img_src}" class="card-img-top "></div>
     <div class="card-body color">
       <h5 class="card-title">${element.title}</h5>
@@ -79,6 +86,8 @@ const displayCard = (element)=>{
   
   return (card);
 }
+// fin fonction affichage
+
 // function addToCart (ajouter au panier)
 const addToCart = () => {
  
@@ -119,7 +128,7 @@ const addToCart = () => {
                   <p class="mr-5"> ${element.title} <br> ${element.price} € / KG </p>
                   <div class="d-flex ms-5">
                     
-                    <p>quantité : <button> - </button> <span id="${element.ref}">1 </span><button class="btnPlus" data-ref="${element.ref}"> + </button></p>
+                    <p>quantité : <button class="btnMinus" data-ref="${element.ref}"> - </button> <span id="${element.ref}">1 </span><button class="btnPlus" data-ref="${element.ref}"> + </button></p>
                     
                   </div>
                   <p>Prix unitaire : </p>
@@ -127,6 +136,7 @@ const addToCart = () => {
                 `;
                 collectionCart.push(element.ref);
                 addQuantity(element);
+                removeQuantity(element);
               }
             }
           });
@@ -134,6 +144,7 @@ const addToCart = () => {
     });
   });
 }
+
 
 //AJOUT DE QUANTITE
 const addQuantity = (element) => {
@@ -146,5 +157,21 @@ const addQuantity = (element) => {
     let quantityTest = document.getElementById(element.ref)
     quantityTest.innerHTML++;
     nbrArticle.innerHTML++;
+  });
+}
+
+// SUPPRESSION QUANTITE
+
+ const removeQuantity = (element) =>{
+  let btnMinus = document.querySelector(".btnMinus");
+
+  btnMinus.addEventListener("click", function(){
+    let modalEl = document.getElementById("cart");
+   let quantityVerif = document.getElementById(element.ref);
+   console.log(quantityVerif);
+   quantityVerif.innerHTML--;
+     if(quantityVerif==0){
+      
+     }
   });
 }
