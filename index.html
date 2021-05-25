@@ -6,9 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" 
-    crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 
@@ -18,7 +17,7 @@
 <body>
     <div class="container-fluid p-0">
         <!-- Début Navbar -->
-        
+
         <!-- Modification avec bg-dark pour couleur boutton -->
         <nav class="navbar navbar-expand-lg navbar-light navbar-dark nav-color">
             <!-- Modification padding -->
@@ -49,9 +48,9 @@
 
                         <!-- Modification ajout fond transparent -->
                         <li class="nav-item buy bg-transparent">
-                            <a class="nav-link" href="#">
-                                <img class="img" alt="Panier pour règlement" src="assets/img/icons8-panier-2-64.png" width="35"
-                                    height="35">
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#panier">
+                                <img class="img" alt="Panier pour règlement" src="assets/img/icons8-panier-2-64.png"
+                                    width="35" height="35">
                             </a>
                         </li>
 
@@ -59,10 +58,32 @@
                 </div>
             </div>
         </nav>
-
         <!-- Fin Navbar -->
+        <!-- Début modal -->
+        <div class="modal fade " id="panier" tabindex="-1" aria-labelledby="label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content text-white" id="modal-bg">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="label">Panier</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="cart">
+                        Il n'y a rien dans votre panier.
+                    </div>
+                    <div class="modal-footer w-100">
+                        <div>
+                            <h5>Total</h5>
+                        </div>
+                        
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn text-white" id="modal-btn">Commander</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIN modal -->
         <div id="home">
-            
+
             <h1>Bienvenue sur e-chair</h1>
 
         </div>
