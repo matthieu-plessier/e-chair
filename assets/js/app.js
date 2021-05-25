@@ -127,11 +127,14 @@ const addToCart = () => {
                     <p>quantité : <button> - </button> <span id="${element.ref}">1 </span><button class="btnPlus" data-ref="${element.ref}"> + </button></p>
                     
                   </div>
-                  
+                  <p id="total">Prix :</p>
                 </div>
                 `;
                 collectionCart.push(element.ref);
                 addQuantity(element);
+                let stockResult = price(element);
+                let priceText = document.getElementById("total")
+                priceText.innerHTML = `Prix : ${stockResult}`
               }
             }
           });
@@ -156,16 +159,11 @@ const calcPricePerPiece = (weight, price) =>  {
   return total;
 }
 
-function price(){
-    fetch('/assets/data/products.json')
-    .then((response) => response.json()) 
-    .then((displayCards) => {
-      displayCards.products.forEach((element) => {
-        
-      });
-    })
-  let result = calcPricePerPiece(weight, price)
+function price(element){
+  for(let count; count<collectionCart.length; count++){
+    if(collectionCart[count]==element.ref){
+      let result = calcPricePerPiece(element.weight, element.price)
+      return result
+    }
+  }
 }
-
-
-
