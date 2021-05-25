@@ -37,7 +37,7 @@
             "price": 25.80
         },
         {
-            "ref": 399566,
+            "ref": 398562,
             "type": "volaille",
             "weight": 300,
             "title": "CUISSE DE POULET",
@@ -46,7 +46,7 @@
             "price": 25.80
         },
         {
-            "ref": 399566,
+            "ref": 399568,
             "type": "volaille",
             "weight": 1400,
             "title": "POULET ENTIER",
@@ -55,7 +55,7 @@
             "price": 25.80
         },
         {
-            "ref": 399566,
+            "ref": 388556,
             "type": "porc",
             "weight": 350,
             "title": "CÔTE ECHINE DE PORC ",
@@ -64,7 +64,7 @@
             "price": 39.80
         },
         {
-            "ref": 399566,
+            "ref": 398567,
             "type": "porc",
             "weight": 350,
             "title": "CÔTE PREMIERE DE PORC",
@@ -73,7 +73,7 @@
             "price": 39.80
         },
         {
-            "ref": 399566,
+            "ref": 399526,
             "type": "porc",
             "weight": 700,
             "title": "FILET MIGNON DE PORC",
@@ -82,7 +82,7 @@
             "price": 39.80
         },
         {
-            "ref": 399566,
+            "ref": 399466,
             "type": "cheval",
             "weight": 200,
             "title": "ENTRECÔTE DE CHEVAL",
@@ -91,7 +91,7 @@
             "price": 32.50
         },
         {
-            "ref": 399566,
+            "ref": 329566,
             "type": "cheval",
             "weight": 300,
             "title": "CÔTTELETTE DE CHEVAL",
@@ -100,7 +100,7 @@
             "price": 32.50
         },
         {
-            "ref": 399566,
+            "ref": 396566,
             "type": "cheval",
             "weight": 500,
             "title": "ROSEBIF DE CHEVAL",

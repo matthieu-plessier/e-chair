@@ -34,21 +34,22 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Boeuf</a>
+                            <a class="nav-link" href="#products" id="beef">Boeuf</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Volaille</a>
+                            <a class="nav-link" href="#products" id="poultry">Volaille</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Porc</a>
+                            <a class="nav-link" href="#products" id="pork">Porc</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Cheval</a>
+                            <a class="nav-link" href="#products" id="horse">Cheval</a>
                         </li>
 
                         <!-- Modification ajout fond transparent -->
                         <li class="nav-item buy bg-transparent">
-                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#panier">
+                            <a class="nav-link d-flex" href="#" data-bs-toggle="modal" data-bs-target="#panier">
+                                <div>0</div>
                                 <img class="img" alt="Panier pour règlement" src="assets/img/icons8-panier-2-64.png"
                                     width="35" height="35">
                             </a>
@@ -67,10 +68,14 @@
                         <h5 class="modal-title" id="label">Panier</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" id="cart">
                         Il n'y a rien dans votre panier.
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer w-100">
+                        <div>
+                            <h5>Total</h5>
+                        </div>
+                        
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                         <button type="button" class="btn text-white" id="modal-btn">Commander</button>
                     </div>
@@ -86,7 +91,9 @@
         </div>
         <div id="products">
             <div class="container">
-                <div class="row" id="cardsProducts"></div>
+                <div class="row" id="cardsProducts">
+                    
+                </div>
             </div>
         </div>
     </div>
