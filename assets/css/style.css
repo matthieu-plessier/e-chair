@@ -101,3 +101,14 @@ nav .nav-link:hover {
     background-color:#6E1412 ;
     color:#ffffff;
 }
+
+/* Début MODAL */
+
+#modal-btn{
+    background-color: #6E1412;
+}
+
+#modal-bg{
+    background-color: #231B1B;
+}
+/* FIN MODAL */
