@@ -73,7 +73,7 @@ const displayCard = (element)=>{
     <div class="card-body color">
       <h5 class="card-title">${element.title}</h5>
       <p class="card-text ">${element.desc}</p>
-      <button class="btnColor" >ajouter au panier</button>
+      <button class="btnColor" data-ref="${element.ref}" >ajouter au panier</button>
     </div>
   </div>`;
   
@@ -87,7 +87,7 @@ const addToCart = () => {
 
   btnList.forEach(element => {
     element.addEventListener("click", function (e) {
-      console.log("TEST")
+      
       let datatest = e.target.dataset.ref;
       let testCart = false;
       fetch('/assets/data/products.json')
@@ -95,7 +95,7 @@ const addToCart = () => {
         .then((displayCards) => {
           displayCards.products.forEach((element) => {
             if (datatest == element.ref) {
-              console.log("DATA")
+              
               collectionCart.forEach(verif => {
                 if (verif == element.ref) {
                   testCart = true;
@@ -106,7 +106,7 @@ const addToCart = () => {
                 let quantityTest = document.getElementById(element.ref)
                 quantityTest.innerHTML++;
               }else {
-                console.log("CREATION")
+                
                 if (nullCart) {
                   modalEl.innerHTML = "";
                   nullCart = false;
