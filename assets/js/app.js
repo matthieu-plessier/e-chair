@@ -126,12 +126,13 @@ const addToCart = () => {
                   <p class="mr-5"> ${element.title} <br> ${element.price} € / KG </p>
                   <div class="d-flex ml-5">
                     
-                    <p>quantité : <button> - </button> <span id="${element.ref}">1 </span><button class="btnPlus" data-ref="${element.ref}"> + </button></p>
+                    <p>quantité : <button class="btnMinus" data-ref="${element.ref}"> - </button> <span id="${element.ref}">1 </span><button class="btnPlus" data-ref="${element.ref}"> + </button></p>
                     
                   </div>
                 `;
                 collectionCart.push(element.ref);
                 addQuantity(element);
+                removeQuantity(element);
               }
             }
           });
@@ -140,7 +141,7 @@ const addToCart = () => {
   });
 }
 
-// fonction suppression panier
+
 //AJOUT DE QUANTITE
 const addQuantity = (element) => {
   let btnPlus = document.querySelector(".btnPlus");
@@ -149,5 +150,21 @@ const addQuantity = (element) => {
   btnPlus.addEventListener("click", function(){
     let quantityTest = document.getElementById(element.ref)
     quantityTest.innerHTML++;
+  });
+}
+
+// SUPPRESSION QUANTITE
+
+ const removeQuantity = (element) =>{
+  let btnMinus = document.querySelector(".btnMinus");
+
+  btnMinus.addEventListener("click", function(){
+    let modalEl = document.getElementById("cart");
+   let quantityVerif = document.getElementById(element.ref);
+   console.log(quantityVerif);
+   quantityVerif.innerHTML--;
+     if(quantityVerif==0){
+      
+     }
   });
 }
