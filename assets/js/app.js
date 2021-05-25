@@ -1,3 +1,5 @@
+// Fonction affichage
+
 let productsEl = document.getElementById('cardsProducts');
 var collectionCart = [];
 var nullCart = true;
@@ -6,6 +8,7 @@ let btnPoultry = document.getElementById('poultry');
 let btnPork = document.getElementById('pork');
 let btnHorse = document.getElementById('horse');
 
+// bouton menu boeuf
 
 btnBeef.addEventListener('click',function(){
   productsEl.innerHTML = "";
@@ -21,6 +24,7 @@ btnBeef.addEventListener('click',function(){
     });
       
 })
+// bouton menu volaille
 
 btnPoultry.addEventListener('click',function(){
   productsEl.innerHTML = "";
@@ -36,6 +40,7 @@ btnPoultry.addEventListener('click',function(){
           });
           
 })
+// bouton menu porc
 
 btnPork.addEventListener('click',function(){
   productsEl.innerHTML = "";
@@ -51,6 +56,7 @@ btnPork.addEventListener('click',function(){
         });
         
 }) 
+// bouton menu cheval
 
 btnHorse.addEventListener('click',function(){
   productsEl.innerHTML = "";
@@ -66,6 +72,7 @@ btnHorse.addEventListener('click',function(){
         });
         
 }) 
+// fonction affichage d'une carte
 
 const displayCard = (element)=>{
   let card = `<div class="col-4 card ml-2 mt-4 mb-4" style="width: 20rem;height:32rem;"><div class="">
@@ -79,6 +86,8 @@ const displayCard = (element)=>{
   
   return (card);
 }
+// fin fonction affichage
+
 // function addToCart (ajouter au panier)
 const addToCart = () => {
  
@@ -116,11 +125,9 @@ const addToCart = () => {
                   <img src="${element.img_src}" width="50px">
                   <p class="mr-5"> ${element.title} <br> ${element.price} € / KG </p>
                   <div class="d-flex ml-5">
-                    <p>quantité : <span id="${element.ref}">1</span></p>
-                    <button> + </button>
+                    <p>quantité : <button> - </button><span id="${element.ref}">1</span><button> + </button></p>
+                    </div>
                   </div>
-                  
-                </div>
                 `;
                 collectionCart.push(element.ref);
               }
@@ -131,5 +138,6 @@ const addToCart = () => {
   });
 }
 
+// fonction suppression panier
 
  
