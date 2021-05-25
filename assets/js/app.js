@@ -3,7 +3,7 @@ fetch('/assets/data/products.json')
 .then((response) => response.json()) 
 .then((displayCards) => {
     displayCards.products.forEach((element) => {
-    productsEl.innerHTML += `<div class="col-4 card mt-4 mb-4" style="width: 20rem;height:32rem;"><div class="">
+    productsEl.innerHTML += `<div class="col-4 card mt-4 mb-4" style="width: 20rem;height:33rem;"><div class="">
     <img src="${element.img_src}" class="card-img-top "></div>
     <div class="card-body color">
       <h5 class="card-title">${element.title}</h5>
