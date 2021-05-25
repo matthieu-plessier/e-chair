@@ -101,7 +101,7 @@ const addToCart = () => {
       fetch('/assets/data/products.json')
         .then((response) => response.json())
         .then((displayCards) => {
-          displayCards.products.forEach((element) => {
+          displayCards.products.forEach((element, index) => {
             if (datatest == element.ref) {
               
               collectionCart.forEach(verif => {
@@ -127,23 +127,27 @@ const addToCart = () => {
                   <p class="mr-5"> ${element.title} <br> ${element.price} € / KG </p>
                   <div class="d-flex ms-5">
                     
-                    <p>quantité : <button class="btnMinus" data-ref="${element.ref}"> - </button> <span id="${element.ref}">1 </span><button class="btnPlus" data-ref="${element.ref}"> + </button></p>
+                    <p>quantité : 
+                      <button id="btnMinus${index}" data-ref="${element.ref}"> - </button>
+                      <span id="${element.ref}">1</span>
+                      <button id="btnPlus${index}" data-ref="${element.ref}"> + </button>
+                     </p>
                     
                   </div>
-                  <p id="total">Prix :</p>
+                  <p class="total${index}">Prix :</p>
                 </div>
                 `;
                 collectionCart.push(element.ref);
-                addQuantity(element);
+                addQuantity(element, index);
                 let stockResult = price(element);
                 let quantity = document.getElementById(element.ref)
                 let nbrQuantity = quantity.innerHTML
                 console.log(nbrQuantity)
-                totalCart += stockResult*nbrQuantity;
+                totalCart += Math.round(stockResult*nbrQuantity);
                 let final = document.getElementById("finalPrice")
                 final.innerHTML = `Total : ${totalCart} €`
 
-                let priceText = document.getElementById("total")
+                let priceText = document.querySelector(`.total${index}`)
                 priceText.innerHTML = `Prix : ${stockResult} €`
               }
             }
@@ -155,22 +159,22 @@ const addToCart = () => {
 
 
 //AJOUT DE QUANTITE
-const addQuantity = (element) => {
-  let btnPlus = document.querySelector(".btnPlus");
-
+const addQuantity = (element, index) => {
+  
+  let btnPlus = document.querySelector(`#btnPlus${index}`);
+  
 
   btnPlus.addEventListener("click", function(){
     let nbrArticle = document.getElementById("nbrTotal")
-
-    let quantityTest = document.getElementById(element.ref)
-    quantityTest.innerHTML++;
+    let quantityNbr = document.getElementById(element.ref)
+    quantityNbr.innerHTML++;
     nbrArticle.innerHTML++;
   });
 }
 // fonction pricePerPiece
 const calcPricePerPiece = (weight, price) =>  {
   let total = (weight /1000 )* price
-  return total;
+  return Math.round(total);
 }
 
 function price(element){
@@ -185,16 +189,17 @@ function price(element){
     }
   }
 }
-// SUPPRESSION QUANTITE
 
+// SUPPRESSION QUANTITE
  const removeQuantity = (element) =>{
-  let btnMinus = document.querySelector(".btnMinus");
+  let btnMinus = document.querySelector(`#btnMinus${index}`);
 
   btnMinus.addEventListener("click", function(){
     let modalEl = document.getElementById("cart");
    let quantityVerif = document.getElementById(element.ref);
-   console.log(quantityVerif);
+   let nbrArticle = document.getElementById("nbrTotal")
    quantityVerif.innerHTML--;
+   nbrArticle.innerHTML--;
      if(quantityVerif==0){
       
      }
