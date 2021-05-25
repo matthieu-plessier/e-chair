@@ -87,7 +87,7 @@ const addToCart = () => {
 
   btnList.forEach(element => {
     element.addEventListener("click", function (e) {
-      
+      let nbrArticle = document.getElementById("nbrTotal")
       let datatest = e.target.dataset.ref;
       let testCart = false;
       fetch('/assets/data/products.json')
@@ -105,8 +105,10 @@ const addToCart = () => {
                 
                 let quantityTest = document.getElementById(element.ref)
                 quantityTest.innerHTML++;
+                nbrArticle.innerHTML++;
               }else {
                 
+                nbrArticle.innerHTML++;
                 if (nullCart) {
                   modalEl.innerHTML = "";
                   nullCart = false;
@@ -115,12 +117,12 @@ const addToCart = () => {
                 <div class="d-flex cartElement w-100" data-ref="${element.ref}">
                   <img src="${element.img_src}" width="50px">
                   <p class="mr-5"> ${element.title} <br> ${element.price} € / KG </p>
-                  <div class="d-flex ml-5">
+                  <div class="d-flex ms-5">
                     
                     <p>quantité : <button> - </button> <span id="${element.ref}">1 </span><button class="btnPlus" data-ref="${element.ref}"> + </button></p>
                     
                   </div>
-                  
+                  <p>Prix unitaire : </p>
                 </div>
                 `;
                 collectionCart.push(element.ref);
@@ -139,7 +141,10 @@ const addQuantity = (element) => {
 
  
   btnPlus.addEventListener("click", function(){
+    let nbrArticle = document.getElementById("nbrTotal")
+
     let quantityTest = document.getElementById(element.ref)
     quantityTest.innerHTML++;
+    nbrArticle.innerHTML++;
   });
 }
