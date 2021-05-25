@@ -5,7 +5,7 @@ let btnBeef = document.getElementById('beef');
 let btnPoultry = document.getElementById('poultry');
 let btnPork = document.getElementById('pork');
 let btnHorse = document.getElementById('horse');
-
+var totalCart = 0;
 
 btnBeef.addEventListener('click',function(){
   productsEl.innerHTML = "";
@@ -133,8 +133,15 @@ const addToCart = () => {
                 collectionCart.push(element.ref);
                 addQuantity(element);
                 let stockResult = price(element);
+                let quantity = document.getElementById(element.ref)
+                let nbrQuantity = quantity.innerHTML
+                console.log(nbrQuantity)
+                totalCart += stockResult*nbrQuantity;
+                let final = document.getElementById("finalPrice")
+                final.innerHTML = `Total : ${totalCart} €`
+
                 let priceText = document.getElementById("total")
-                priceText.innerHTML = `Prix : ${stockResult}`
+                priceText.innerHTML = `Prix : ${stockResult} €`
               }
             }
           });
@@ -160,9 +167,13 @@ const calcPricePerPiece = (weight, price) =>  {
 }
 
 function price(element){
-  for(let count; count<collectionCart.length; count++){
+  
+  console.log(collectionCart)
+  for(let count = 0; count<=collectionCart.length; count++){
+    
     if(collectionCart[count]==element.ref){
       let result = calcPricePerPiece(element.weight, element.price)
+      
       return result
     }
   }
