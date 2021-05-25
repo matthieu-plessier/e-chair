@@ -1,23 +1,82 @@
 let productsEl = document.getElementById('cardsProducts');
 var collectionCart = [];
 var nullCart = true;
+let btnBeef = document.getElementById('beef');
+let btnPoultry = document.getElementById('poultry');
+let btnPork = document.getElementById('pork');
+let btnHorse = document.getElementById('horse');
 
-fetch('/assets/data/products.json')
-  .then((response) => response.json())
-  .then((displayCards) => {
-    displayCards.products.forEach((element) => {
-      productsEl.innerHTML += `<div class="col-4 card" style="width: 20rem;height:30rem;"><div class="">
+
+btnBeef.addEventListener('click',function(){
+  productsEl.innerHTML = "";
+  fetch('/assets/data/products.json')
+    .then((response) => response.json()) 
+    .then((displayCards) => {
+      displayCards.products.forEach((element) => { 
+        if(element.type == "boeuf") {
+          productsEl.innerHTML += displayCard(element);
+          }
+        });
+        addToCart();
+      });
+      
+})
+
+btnPoultry.addEventListener('click',function(){
+  productsEl.innerHTML = "";
+    fetch('/assets/data/products.json')
+      .then((response) => response.json()) 
+      .then((displayCards) => {
+        displayCards.products.forEach((element) => { 
+          if(element.type == "volaille") {
+            productsEl.innerHTML += displayCard(element);
+              }
+            });
+            addToCart();
+          });
+          
+})
+
+btnPork.addEventListener('click',function(){
+  productsEl.innerHTML = "";
+    fetch('/assets/data/products.json')
+      .then((response) => response.json()) 
+        .then((displayCards) => {
+          displayCards.products.forEach((element) => { 
+            if(element.type == "porc") {
+              productsEl.innerHTML += displayCard(element);
+            }
+          });
+        });
+        addToCart();
+}) 
+
+btnHorse.addEventListener('click',function(){
+  productsEl.innerHTML = "";
+    fetch('/assets/data/products.json')
+      .then((response) => response.json()) 
+        .then((displayCards) => {
+          displayCards.products.forEach((element) => { 
+            if(element.type == "cheval") {
+              productsEl.innerHTML += displayCard(element);
+            }
+          });
+        });
+        addToCart();
+}) 
+
+const displayCard = (element)=>{
+  let card = `<div class="col-4 card mt-4 mb-4" style="width: 20rem;height:32rem;"><div class="">
     <img src="${element.img_src}" class="card-img-top "></div>
     <div class="card-body color">
       <h5 class="card-title">${element.title}</h5>
-      <p class="card-text">${element.desc}</p>
-      <button class="btnColor" data-ref="${element.ref}">ajouter au panier</button>
+      <p class="card-text ">${element.desc}</p>
+      <button class="btnColor" >ajouter au panier</button>
     </div>
   </div>`;
-    });
-    addToCart();
-  })
-
+  
+  return (card);
+}
 // function addToCart (ajouter au panier)
 const addToCart = () => {
  
@@ -66,3 +125,6 @@ const addToCart = () => {
     });
   });
 }
+
+
+ 
