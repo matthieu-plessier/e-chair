@@ -11,7 +11,27 @@ fetch('/assets/data/products.json')
       <button class="btnColor">ajouter au panier</button>
     </div>
   </div>`;
-   });
+  });
 })
 
 // function addToCart (ajouter au panier)
+
+
+
+// fonction pricePerPiece
+const calcPricePerPiece = (weight, price) =>  {
+  let total = (weight /1000 )* price
+  return total;
+}
+
+function calcPricePerPiece(){
+    fetch('/assets/data/products.json')
+    .then((response) => response.json()) 
+    .then((displayCards) => {
+      displayCards.products.forEach((element) => {
+        
+      });
+    })
+  let result = calcPricePerPiece(weight, price)
+}
+

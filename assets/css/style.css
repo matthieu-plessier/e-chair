@@ -80,8 +80,12 @@ nav .nav-link:hover {
 }
 
 /* Fin navbar */ 
+h1 {
+    margin: 15px;
+}
 #home{
     background-image: url(/assets/img/fond.jpg);
+    background-position: center;
     font-family: "roboto";
     min-height: 100vh;
     text-align: right;
