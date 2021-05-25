@@ -47,8 +47,9 @@ btnPork.addEventListener('click',function(){
               productsEl.innerHTML += displayCard(element);
             }
           });
+          addToCart();
         });
-        addToCart();
+        
 }) 
 
 btnHorse.addEventListener('click',function(){
@@ -61,8 +62,9 @@ btnHorse.addEventListener('click',function(){
               productsEl.innerHTML += displayCard(element);
             }
           });
+          addToCart();
         });
-        addToCart();
+        
 }) 
 
 const displayCard = (element)=>{
