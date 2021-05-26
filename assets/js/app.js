@@ -178,6 +178,8 @@ document.addEventListener("click", function(event){
     let nbrArticle = document.getElementById("nbrTotal")
     let quantityVerif = document.getElementById(event.target.dataset.ref)
     let child = document.querySelector(`div[data-ref="${event.target.dataset.ref}"]`);
+    let modalEl = document.getElementById("cart");
+    
     
     quantityVerif.innerHTML--;
     nbrArticle.innerHTML--;
@@ -186,6 +188,7 @@ document.addEventListener("click", function(event){
       quantityVerif.innerHTML = 0;
       nbrArticle.innerHTML = 0;
       child.remove();
+      modalEl.innerHTML = `<div>Il n'y a rien dans votre panier.</div>`
       
     }
   }
