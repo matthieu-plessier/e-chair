@@ -6,7 +6,7 @@
             "weight": 300,
             "title": "RUMSTECK",
             "desc": "Nous vous proposons ici un pavé de rumstek de race Kobé de qualité supérieure. Idéal pour une cuisson au four ou avec un beurre persillé.",
-            "img_src": "/assets/img/rumstek_boeuf.jpg",
+            "img_src": "../img/rumstek_boeuf.jpg",
             "price": 279
         },
         {
@@ -15,7 +15,7 @@
             "weight": 400,
             "title": "FILET-MIGNON",
             "desc": "Nous vous proposons ici un filet-mignon de race Kobé de qualité supérieure. Idéal pour les grillades ou pour les amateurs de cuisson bleue.",
-            "img_src": "/assets/img/filet_boeuf.jpg",
+            "img_src": "../img/filet_boeuf.jpg",
             "price": 279
         },
         {
@@ -24,7 +24,7 @@
             "weight": 500,
             "title": "FAUX-FILET",
             "desc": "Nous vous proposons ici un filet-mignon de race Kobé de qualité supérieure. Idéal pour une cuisson au barbecue ou sur une plancha.",
-            "img_src": "/assets/img/faux-filet.jpeg",
+            "img_src": "../img/faux-filet.jpeg",
             "price": 279
         },
         {
@@ -33,7 +33,7 @@
             "weight": 185,
             "title": "FILET DE POULET",
             "desc": "Nous vous proposons ici un filet de poulet fermier élevé en pleine air. Idéal accompagné.",
-            "img_src": "/assets/img/blanc_de_poulet.jpg",
+            "img_src": "../img/blanc_de_poulet.jpg",
             "price": 25.80
         },
         {
@@ -42,7 +42,7 @@
             "weight": 300,
             "title": "CUISSE DE POULET",
             "desc": "Nous vous proposons ici des cuisse de poulet fermier élevé en plaine air. Idéal pour une cuisson au four ou accompagné de frite de patate douce.",
-            "img_src": "/assets/img/cuisse_de_poulet.jpg",
+            "img_src": "../img/cuisse_de_poulet.jpg",
             "price": 25.80
         },
         {
@@ -51,7 +51,7 @@
             "weight": 1400,
             "title": "POULET ENTIER",
             "desc": "Nous vous proposons ici un poulet fermier entier élevé en pleine air. Idéal pour une cuisson au four avec un beurre persillé et quelques oignons.",
-            "img_src": "/assets/img/poulet_entier.jpg",
+            "img_src": "../img/poulet_entier.jpg",
             "price": 25.80
         },
         {
@@ -60,7 +60,7 @@
             "weight": 350,
             "title": "CÔTE ECHINE DE PORC ",
             "desc": "Nous vous proposons ici une côte de porc Noir de Bigorre. Son persillé, son goût parfumé de noisette et ses beaux gras font la renommée de ce porc noir atypique",
-            "img_src": "/assets/img/porc_echine.jpg",
+            "img_src": "../img/porc_echine.jpg",
             "price": 39.80
         },
         {
@@ -69,7 +69,7 @@
             "weight": 350,
             "title": "CÔTE PREMIERE DE PORC",
             "desc": "Nous vous proposons ici une côte de porc Noir de Bigorre. Son persillé, son goût parfumé de noisette et ses beaux gras font la renommée de ce porc noir atypique",
-            "img_src": "/assets/img/premiere_de_porc.jpg",
+            "img_src": "../img/premiere_de_porc.jpg",
             "price": 39.80
         },
         {
@@ -78,7 +78,7 @@
             "weight": 700,
             "title": "FILET MIGNON DE PORC",
             "desc": "Nous vous proposons ici un filet Mignon de porc Noir de Bigorre. Son persillé, son goût parfumé de noisette et ses beaux gras font la renommée de ce porc noir atypique",
-            "img_src": "/assets/img/filet_mignon_porc.jpg",
+            "img_src": "../img/filet_mignon_porc.jpg",
             "price": 39.80
         },
         {
@@ -87,7 +87,7 @@
             "weight": 200,
             "title": "ENTRECÔTE DE CHEVAL",
             "desc": "Nous vous proposons ici une entrecôte de cheval de race supérieure. Idéal pour une cuisson au grill ou avec des herbes de provence",
-            "img_src": "/assets/img/entrecote_de_cheval.jpg",
+            "img_src": "../img/entrecote_de_cheval.jpg",
             "price": 32.50
         },
         {
@@ -96,7 +96,7 @@
             "weight": 300,
             "title": "CÔTTELETTE DE CHEVAL",
             "desc": "Nous vous proposons ici une côttelette de cheval de race supérieure. Idéal pour une cuisson au grill.",
-            "img_src": "/assets/img/cottelettes_de_cheval.jpg",
+            "img_src": "../img/cottelettes_de_cheval.jpg",
             "price": 32.50
         },
         {
@@ -105,7 +105,7 @@
             "weight": 500,
             "title": "ROSEBIF DE CHEVAL",
             "desc": "Nous vous proposons ici un rosebif de cheval de race supérieure. Idéal pour une cuisson au four ou avec un beurre persillé.",
-            "img_src": "/assets/img/rosebif_de_cheval.jpg",
+            "img_src": "../img/rosebif_de_cheval.jpg",
             "price": 32.50
         }
     ]
