@@ -8,7 +8,7 @@ let btnPoultry = document.getElementById('poultry');
 let btnPork = document.getElementById('pork');
 let btnHorse = document.getElementById('horse');
 var totalCart = 0;
-
+var testCart = false;
 // bouton menu boeuf
 btnBeef.addEventListener('click',function(){
   productsEl.innerHTML = "";
@@ -97,7 +97,7 @@ const addToCart = () => {
     element.addEventListener("click", function (e) {
       let nbrArticle = document.getElementById("nbrTotal")
       let datatest = e.target.dataset.ref;
-      let testCart = false;
+      
       fetch('/assets/data/products.json')
         .then((response) => response.json())
         .then((displayCards) => {
@@ -110,7 +110,6 @@ const addToCart = () => {
                 }
               });
               if (testCart) {
-                
                 let quantityTest = document.getElementById(element.ref)
                 quantityTest.innerHTML++;
                 nbrArticle.innerHTML++;
@@ -189,7 +188,7 @@ document.addEventListener("click", function(event){
       nbrArticle.innerHTML = 0;
       child.remove();
       modalEl.innerHTML = `<div>Il n'y a rien dans votre panier.</div>`
-      
+      collectionCart = []
     }
   }
   
