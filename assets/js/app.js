@@ -163,8 +163,6 @@ const unitPrice = (jsonEl) => {
 //AJOUT DE QUANTITE
 document.addEventListener("click", function(event){
   if(event.target.classList.contains("plus")){
-    console.log(event.target.dataset.ref)
-    console.log("click")
     let nbrArticle = document.getElementById("nbrTotal")
     let quantityNbr = document.getElementById(event.target.dataset.ref)
 
@@ -175,41 +173,26 @@ document.addEventListener("click", function(event){
 });
 
 // SUPPRESSION QUANTITE
-<<<<<<< HEAD
- const removeQuantity = (element, index) =>{
-  let btnMinus = document.querySelector(`#btnMinus${index}`);
-
-  btnMinus.addEventListener("click", function(){
-    
-   let quantityVerif = document.getElementById(element.ref);
-   let nbrArticle = document.getElementById("nbrTotal")
-   quantityVerif.innerHTML--;
-   nbrArticle.innerHTML--;
-   Total(element, index);
-    if(quantityVerif.innerHTML<=0){
-      quantityVerif.innerHTML = 0;
-       nbrArticle.innerHTML = 0;
-     }
-  });
-}
-
-=======
 document.addEventListener("click", function(event){
   if(event.target.classList.contains("minus")){
     let nbrArticle = document.getElementById("nbrTotal")
     let quantityVerif = document.getElementById(event.target.dataset.ref)
-
+    let child = document.querySelector(`div[data-ref="${event.target.dataset.ref}"]`);
+    
     quantityVerif.innerHTML--;
     nbrArticle.innerHTML--;
 
     if(quantityVerif.innerHTML<=0){
       quantityVerif.innerHTML = 0;
       nbrArticle.innerHTML = 0;
+      child.remove();
+      
     }
   }
   
+  
+  
 });
->>>>>>> origin/fonctionnel
 // fonction pricePerPiece
 const calcPricePerPiece = (weight, price) =>  {
   let total = (weight /1000 )* price;
