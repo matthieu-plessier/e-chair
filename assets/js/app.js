@@ -139,16 +139,8 @@ const addToCart = () => {
                 `;
                 collectionCart.push(element.ref);
                 addQuantity(element, index);
-                let stockResult = price(element);
-                let quantity = document.getElementById(element.ref)
-                let nbrQuantity = quantity.innerHTML
-                console.log(nbrQuantity)
-                totalCart += Math.round(stockResult*nbrQuantity);
-                let final = document.getElementById("finalPrice")
-                final.innerHTML = `Total : ${totalCart} €`
-
-                let priceText = document.querySelector(`.total${index}`)
-                priceText.innerHTML = `Prix : ${stockResult} €`
+                removeQuantity(element, index);
+                Total(element, index);
               }
             }
           });
@@ -157,41 +149,35 @@ const addToCart = () => {
   });
 }
 
+//TOTAL
+const Total = (element, index) => {
+  let stockResult = price(element);
+  let quantity = document.getElementById(element.ref)
+  let nbrQuantity = quantity.innerHTML
+  totalCart = Math.round(stockResult*nbrQuantity);
+  let final = document.getElementById("finalPrice")
+  final.innerHTML = `Total : ${totalCart} €`
+
+  let priceText = document.querySelector(`.total${index}`)
+  priceText.innerHTML = `Prix : ${stockResult} €`
+}
 
 //AJOUT DE QUANTITE
 const addQuantity = (element, index) => {
   
   let btnPlus = document.querySelector(`#btnPlus${index}`);
-  
 
   btnPlus.addEventListener("click", function(){
     let nbrArticle = document.getElementById("nbrTotal")
     let quantityNbr = document.getElementById(element.ref)
     quantityNbr.innerHTML++;
     nbrArticle.innerHTML++;
+    Total(element, index);
   });
-}
-// fonction pricePerPiece
-const calcPricePerPiece = (weight, price) =>  {
-  let total = (weight /1000 )* price
-  return Math.round(total);
-}
-
-function price(element){
-  
-  console.log(collectionCart)
-  for(let count = 0; count<=collectionCart.length; count++){
-    
-    if(collectionCart[count]==element.ref){
-      let result = calcPricePerPiece(element.weight, element.price)
-      
-      return result
-    }
-  }
 }
 
 // SUPPRESSION QUANTITE
- const removeQuantity = (element) =>{
+ const removeQuantity = (element, index) =>{
   let btnMinus = document.querySelector(`#btnMinus${index}`);
 
   btnMinus.addEventListener("click", function(){
@@ -200,8 +186,27 @@ function price(element){
    let nbrArticle = document.getElementById("nbrTotal")
    quantityVerif.innerHTML--;
    nbrArticle.innerHTML--;
-     if(quantityVerif==0){
-      
+   Total(element, index);
+    if(quantityVerif.innerHTML<=0){
+      quantityVerif.innerHTML = 0;
+      nbrArticle.innerHTML = 0;
      }
   });
+}
+
+// fonction pricePerPiece
+const calcPricePerPiece = (weight, price) =>  {
+  let total = (weight /1000 )* price
+  return Math.round(total);
+}
+
+function price(element){
+  for(let count = 0; count<=collectionCart.length; count++){
+    
+    if(collectionCart[count]==element.ref){
+      let result = calcPricePerPiece(element.weight, element.price)
+      
+      return result
+    }
+  }
 }
