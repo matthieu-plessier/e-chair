@@ -80,6 +80,10 @@ nav .nav-link:hover {
 }
 
 /* Fin navbar */ 
+h1 img{
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+}
 h1 {
     margin: 80px;
 }
