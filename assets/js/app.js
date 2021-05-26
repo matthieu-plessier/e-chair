@@ -184,7 +184,7 @@ document.addEventListener("click", function(event){
       quantityVerif.innerHTML = 0;
       nbrArticle.innerHTML = 0;
       child.remove();
-      modalEl.innerHTML = `<div>Il n'y a rien dans votre panier.</div>`
+      
       
     }
     final(stockElement, quantityVerif.innerHTML)
