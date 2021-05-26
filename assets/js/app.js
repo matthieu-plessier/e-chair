@@ -1,7 +1,8 @@
 // Fonction affichage
-
 let productsEl = document.getElementById('cardsProducts');
-var collectionCart = [];
+var collectionCart = []
+var stockBtn = "";
+var stockElement = "";
 var nullCart = true;
 let btnBeef = document.getElementById('beef');
 let btnPoultry = document.getElementById('poultry');
@@ -95,6 +96,7 @@ const addToCart = () => {
 
   btnList.forEach(element => {
     element.addEventListener("click", function (e) {
+      stockBtn = e;
       let nbrArticle = document.getElementById("nbrTotal")
       let datatest = e.target.dataset.ref;
       let testCart = false;
@@ -103,17 +105,17 @@ const addToCart = () => {
         .then((displayCards) => {
           displayCards.products.forEach((element, index) => {
             if (datatest == element.ref) {
-              
+              stockElement = element;
               collectionCart.forEach(verif => {
                 if (verif == element.ref) {
                   testCart = true;
                 }
               });
               if (testCart) {
-                
                 let quantityTest = document.getElementById(element.ref)
                 quantityTest.innerHTML++;
                 nbrArticle.innerHTML++;
+                final(stockElement, quantityTest.innerHTML)
               }else {
                 
                 nbrArticle.innerHTML++;
@@ -123,24 +125,26 @@ const addToCart = () => {
                 }
                 modalEl.innerHTML += `
                 <div class="d-flex cartElement w-100" data-ref="${element.ref}">
-                  <img src="${element.img_src}" width="50px">
-                  <p class="mr-5"> ${element.title} <br> ${element.price} € / KG </p>
-                  <div class="d-flex ms-5">
+                  <img src="${element.img_src}" width="50px" height="50px" class="me-2">
+                  <p class="mr-4"> ${element.title} <br> ${element.price} € / KG - <br> poids: ${element.weight}Gr </p>
+                  <div class="d-flex ms-4">
                     
-                    <p>quantité : 
-                      <button id="btnMinus${index}" data-ref="${element.ref}"> - </button>
+                    <p class="me-4">quantité : <br>
+                      <button class="minus" id="btnMinus${index}" data-ref="${element.ref}"> - </button>
                       <span id="${element.ref}">1</span>
-                      <button id="btnPlus${index}" data-ref="${element.ref}"> + </button>
+                      <button class="plus" id="btnPlus${index}" data-ref="${element.ref}"> + </button>
                      </p>
                     
                   </div>
-                  <p class="total${index}">Prix :</p>
+                  <p id="total${index}" class="forCalc">Prix :</p>
                 </div>
                 `;
                 collectionCart.push(element.ref);
-                addQuantity(element, index);
-                removeQuantity(element, index);
-                Total(element, index);
+                // collectionCart.push(1);
+                
+                unitPrice(e, index);
+                
+                final(stockElement, 1)
               }
             }
           });
@@ -149,54 +153,45 @@ const addToCart = () => {
   });
 }
 
-//TOTAL
-const Total = (element, index) => {
-  let stockResult = price(element);
-  let quantity = document.getElementById(element.ref)
-  let nbrQuantity = quantity.innerHTML
-  totalCart = Math.round(stockResult*nbrQuantity);
-  let final = document.getElementById("finalPrice")
-  final.innerHTML = `Total : ${totalCart} €`
 
-  let priceText = document.querySelector(`.total${index}`)
-  priceText.innerHTML = `Prix : ${stockResult} €`
-}
 
 //AJOUT DE QUANTITE
-const addQuantity = (element, index) => {
-  
-  let btnPlus = document.querySelector(`#btnPlus${index}`);
-
-  btnPlus.addEventListener("click", function(){
+document.addEventListener("click", function(event){
+  if(event.target.classList.contains("plus")){
     let nbrArticle = document.getElementById("nbrTotal")
-    let quantityNbr = document.getElementById(element.ref)
+    let quantityNbr = document.getElementById(event.target.dataset.ref)
+
     quantityNbr.innerHTML++;
     nbrArticle.innerHTML++;
-    Total(element, index);
-  });
-}
+    final(stockElement, quantityNbr.innerHTML)
+  }
+});
 
 // SUPPRESSION QUANTITE
- const removeQuantity = (element, index) =>{
-  let btnMinus = document.querySelector(`#btnMinus${index}`);
+document.addEventListener("click", function(event){
+  if(event.target.classList.contains("minus")){
+    let nbrArticle = document.getElementById("nbrTotal")
+    let quantityVerif = document.getElementById(event.target.dataset.ref)
+    let child = document.querySelector(`div[data-ref="${event.target.dataset.ref}"]`);
+    
+    quantityVerif.innerHTML--;
+    nbrArticle.innerHTML--;
 
-  btnMinus.addEventListener("click", function(){
-    let modalEl = document.getElementById("cart");
-   let quantityVerif = document.getElementById(element.ref);
-   let nbrArticle = document.getElementById("nbrTotal")
-   quantityVerif.innerHTML--;
-   nbrArticle.innerHTML--;
-   Total(element, index);
     if(quantityVerif.innerHTML<=0){
       quantityVerif.innerHTML = 0;
       nbrArticle.innerHTML = 0;
-     }
-  });
-}
-
+      child.remove();
+      
+    }
+    final(stockElement, quantityVerif.innerHTML)
+  }
+  
+  
+  
+});
 // fonction pricePerPiece
 const calcPricePerPiece = (weight, price) =>  {
-  let total = (weight /1000 )* price
+  let total = (weight /1000 )* price;
   return Math.round(total);
 }
 
@@ -209,4 +204,34 @@ function price(element){
       return result
     }
   }
+}
+
+const final = (element, nbrQuantity) =>{
+  allPriceUnit =  Array.from(document.getElementsByClassName("forCalc"))
+
+  console.log(allPriceUnit)
+  allPriceUnit.forEach(element => {
+    console.log(element.innerHTML)
+  });
+  let stockResult = price(element);
+  totalCart = Math.round(stockResult*nbrQuantity);
+  let final = document.getElementById("finalPrice")
+  final.innerHTML = `Total : ${totalCart} €`
+}
+
+//TOTAL
+const unitPrice = () => {
+  
+  let datatest = stockBtn.target.dataset.ref;
+  fetch('/assets/data/products.json')
+  .then((response) => response.json()) 
+  .then((displayCards) => {
+    displayCards.products.forEach((element, index) => { 
+      if (datatest == element.ref) {
+        let priceEl = document.getElementById(`total${index}`)
+        priceEl.innerHTML = `Prix : ${price(element)} €`
+      }
+    });
+  });
+
 }
