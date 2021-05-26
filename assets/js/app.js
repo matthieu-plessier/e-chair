@@ -157,8 +157,6 @@ const addToCart = () => {
 //AJOUT DE QUANTITE
 document.addEventListener("click", function(event){
   if(event.target.classList.contains("plus")){
-    console.log(event.target.dataset.ref)
-    console.log("click")
     let nbrArticle = document.getElementById("nbrTotal")
     let quantityNbr = document.getElementById(event.target.dataset.ref)
 
@@ -173,16 +171,21 @@ document.addEventListener("click", function(event){
   if(event.target.classList.contains("minus")){
     let nbrArticle = document.getElementById("nbrTotal")
     let quantityVerif = document.getElementById(event.target.dataset.ref)
-
+    let child = document.querySelector(`div[data-ref="${event.target.dataset.ref}"]`);
+    
     quantityVerif.innerHTML--;
     nbrArticle.innerHTML--;
 
     if(quantityVerif.innerHTML<=0){
       quantityVerif.innerHTML = 0;
       nbrArticle.innerHTML = 0;
+      child.remove();
+      
     }
     final(stockElement, quantityVerif.innerHTML)
   }
+  
+  
   
 });
 // fonction pricePerPiece
