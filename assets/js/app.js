@@ -7,9 +7,9 @@ let btnBeef = document.getElementById('beef');
 let btnPoultry = document.getElementById('poultry');
 let btnPork = document.getElementById('pork');
 let btnHorse = document.getElementById('horse');
+var totalCart = 0;
 
 // bouton menu boeuf
-
 btnBeef.addEventListener('click',function(){
   productsEl.innerHTML = "";
   fetch('/assets/data/products.json')
@@ -83,14 +83,13 @@ const displayCard = (element)=>{
       <button class="btnColor" data-ref="${element.ref}" >ajouter au panier</button>
     </div>
   </div>`;
-  
   return (card);
 }
 // fin fonction affichage
 
 // function addToCart (ajouter au panier)
 const addToCart = () => {
- 
+
   let modalEl = document.getElementById("cart");
   let btnList = Array.from(document.getElementsByClassName("btnColor"));
 
@@ -102,7 +101,7 @@ const addToCart = () => {
       fetch('/assets/data/products.json')
         .then((response) => response.json())
         .then((displayCards) => {
-          displayCards.products.forEach((element) => {
+          displayCards.products.forEach((element, index) => {
             if (datatest == element.ref) {
               
               collectionCart.forEach(verif => {
@@ -128,15 +127,20 @@ const addToCart = () => {
                   <p class="mr-5"> ${element.title} <br> ${element.price} € / KG </p>
                   <div class="d-flex ms-5">
                     
-                    <p>quantité : <button class="btnMinus" data-ref="${element.ref}"> - </button> <span id="${element.ref}">1 </span><button class="btnPlus" data-ref="${element.ref}"> + </button></p>
+                    <p>quantité : 
+                      <button id="btnMinus${index}" data-ref="${element.ref}"> - </button>
+                      <span id="${element.ref}">1</span>
+                      <button id="btnPlus${index}" data-ref="${element.ref}"> + </button>
+                     </p>
                     
                   </div>
-                  <p>Prix unitaire : </p>
+                  <p class="total${index}">Prix :</p>
                 </div>
                 `;
                 collectionCart.push(element.ref);
-                addQuantity(element);
-                removeQuantity(element);
+                addQuantity(element, index);
+                removeQuantity(element, index);
+                Total(element, index);
               }
             }
           });
@@ -145,22 +149,35 @@ const addToCart = () => {
   });
 }
 
+//TOTAL
+const Total = (element, index) => {
+  let stockResult = price(element);
+  let quantity = document.getElementById(element.ref)
+  let nbrQuantity = quantity.innerHTML
+  totalCart = Math.round(stockResult*nbrQuantity);
+  let final = document.getElementById("finalPrice")
+  final.innerHTML = `Total : ${totalCart} €`
+
+  let priceText = document.querySelector(`.total${index}`)
+  priceText.innerHTML = `Prix : ${stockResult} €`
+}
 
 //AJOUT DE QUANTITE
-const addQuantity = (element) => {
-  let btnPlus = document.querySelector(".btnPlus");
+const addQuantity = (element, index) => {
+  
+  let btnPlus = document.querySelector(`#btnPlus${index}`);
 
- 
   btnPlus.addEventListener("click", function(){
     let nbrArticle = document.getElementById("nbrTotal")
-
-    let quantityTest = document.getElementById(element.ref)
-    quantityTest.innerHTML++;
+    let quantityNbr = document.getElementById(element.ref)
+    quantityNbr.innerHTML++;
     nbrArticle.innerHTML++;
+    Total(element, index);
   });
 }
 
 // SUPPRESSION QUANTITE
+<<<<<<< HEAD
 
 const removeQuantity = (element) =>{
   let btnMinus = document.querySelector(".btnMinus");
@@ -170,5 +187,38 @@ const removeQuantity = (element) =>{
     if(quantityVerif.innerHTML>0){
       quantityVerif.innerHTML--;
     }
+=======
+ const removeQuantity = (element, index) =>{
+  let btnMinus = document.querySelector(`#btnMinus${index}`);
+
+  btnMinus.addEventListener("click", function(){
+    let modalEl = document.getElementById("cart");
+   let quantityVerif = document.getElementById(element.ref);
+   let nbrArticle = document.getElementById("nbrTotal")
+   quantityVerif.innerHTML--;
+   nbrArticle.innerHTML--;
+   Total(element, index);
+    if(quantityVerif.innerHTML<=0){
+      quantityVerif.innerHTML = 0;
+      nbrArticle.innerHTML = 0;
+     }
+>>>>>>> origin/dev
   });
+}
+
+// fonction pricePerPiece
+const calcPricePerPiece = (weight, price) =>  {
+  let total = (weight /1000 )* price
+  return Math.round(total);
+}
+
+function price(element){
+  for(let count = 0; count<=collectionCart.length; count++){
+    
+    if(collectionCart[count]==element.ref){
+      let result = calcPricePerPiece(element.weight, element.price)
+      
+      return result
+    }
+  }
 }

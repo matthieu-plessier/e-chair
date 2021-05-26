@@ -80,8 +80,12 @@ nav .nav-link:hover {
 }
 
 /* Fin navbar */ 
+h1 {
+    margin: 80px;
+}
 #home{
     background-image: url(/assets/img/fond.jpg);
+    background-position: center;
     font-family: "roboto";
     min-height: 100vh;
     text-align: right;
@@ -112,3 +116,39 @@ nav .nav-link:hover {
     background-color: #231B1B;
 }
 /* FIN MODAL */
+
+/* Début Footer */
+
+
+.Logo {
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
+.Title {
+    color:white !important;
+    height:10px;
+}
+
+.Contact {
+    color:white;
+}
+
+.Copyright {
+    color:white;
+}
+
+.CB {
+    color:white;
+}
+
+.Mentions {
+    color:white !important;
+    text-decoration: none;
+}
+
+.Retour {
+    text-decoration:none;
+    color:black !important;
+}
+
