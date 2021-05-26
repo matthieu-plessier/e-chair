@@ -115,6 +115,7 @@ const addToCart = () => {
                 let quantityTest = document.getElementById(element.ref)
                 quantityTest.innerHTML++;
                 nbrArticle.innerHTML++;
+                final(stockElement, quantityTest.innerHTML)
               }else {
                 
                 nbrArticle.innerHTML++;
