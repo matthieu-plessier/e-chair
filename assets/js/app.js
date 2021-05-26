@@ -1,7 +1,7 @@
 // Fonction affichage
 
 let productsEl = document.getElementById('cardsProducts');
-var collectionCart = [];
+var collectionCart = []
 var nullCart = true;
 let btnBeef = document.getElementById('beef');
 let btnPoultry = document.getElementById('poultry');
@@ -124,23 +124,25 @@ const addToCart = () => {
                 modalEl.innerHTML += `
                 <div class="d-flex cartElement w-100" data-ref="${element.ref}">
                   <img src="${element.img_src}" width="50px">
-                  <p class="mr-5"> ${element.title} <br> ${element.price} € / KG </p>
+                  <p class="mr-5"> ${element.title} <br> ${element.price} € / KG - <br> poids: ${element.weight}Gr </p>
                   <div class="d-flex ms-5">
                     
-                    <p>quantité : 
-                      <button id="btnMinus${index}" data-ref="${element.ref}"> - </button>
+                    <p class="me-5">quantité : <br>
+                      <button class="minus" id="btnMinus${index}" data-ref="${element.ref}"> - </button>
                       <span id="${element.ref}">1</span>
-                      <button id="btnPlus${index}" data-ref="${element.ref}"> + </button>
+                      <button class="plus" id="btnPlus${index}" data-ref="${element.ref}"> + </button>
                      </p>
                     
                   </div>
-                  <p class="total${index}">Prix :</p>
+                  <p class="total">Prix :</p>
                 </div>
                 `;
                 collectionCart.push(element.ref);
-                addQuantity(element, index);
-                removeQuantity(element, index);
-                Total(element, index);
+                // collectionCart.push(1);
+                
+                unitPrice(element, index);
+                
+                final(element, 1)
               }
             }
           });
@@ -150,53 +152,47 @@ const addToCart = () => {
 }
 
 //TOTAL
-const Total = (element, index) => {
-  let stockResult = price(element);
-  let quantity = document.getElementById(element.ref)
-  let nbrQuantity = quantity.innerHTML
-  totalCart = Math.round(stockResult*nbrQuantity);
-  let final = document.getElementById("finalPrice")
-  final.innerHTML = `Total : ${totalCart} €`
-
-  let priceText = document.querySelector(`.total${index}`)
-  priceText.innerHTML = `Prix : ${stockResult} €`
+const unitPrice = (jsonEl) => {
+  let priceText = Array.from(document.getElementsByClassName("total"))
+  priceText.forEach(element => {
+    let stockResult = price(jsonEl);
+    jsonEl.innerHTML = `Prix : ${stockResult} €`
+  });
 }
 
 //AJOUT DE QUANTITE
-const addQuantity = (element, index) => {
-  
-  let btnPlus = document.querySelector(`#btnPlus${index}`);
-
-  btnPlus.addEventListener("click", function(){
+document.addEventListener("click", function(event){
+  if(event.target.classList.contains("plus")){
+    console.log(event.target.dataset.ref)
+    console.log("click")
     let nbrArticle = document.getElementById("nbrTotal")
-    let quantityNbr = document.getElementById(element.ref)
+    let quantityNbr = document.getElementById(event.target.dataset.ref)
+
     quantityNbr.innerHTML++;
     nbrArticle.innerHTML++;
-    Total(element, index);
-  });
-}
+    
+  }
+});
 
 // SUPPRESSION QUANTITE
- const removeQuantity = (element, index) =>{
-  let btnMinus = document.querySelector(`#btnMinus${index}`);
+document.addEventListener("click", function(event){
+  if(event.target.classList.contains("minus")){
+    let nbrArticle = document.getElementById("nbrTotal")
+    let quantityVerif = document.getElementById(event.target.dataset.ref)
 
-  btnMinus.addEventListener("click", function(){
-    let modalEl = document.getElementById("cart");
-   let quantityVerif = document.getElementById(element.ref);
-   let nbrArticle = document.getElementById("nbrTotal")
-   quantityVerif.innerHTML--;
-   nbrArticle.innerHTML--;
-   Total(element, index);
+    quantityVerif.innerHTML--;
+    nbrArticle.innerHTML--;
+
     if(quantityVerif.innerHTML<=0){
       quantityVerif.innerHTML = 0;
       nbrArticle.innerHTML = 0;
-     }
-  });
-}
-
+    }
+  }
+  
+});
 // fonction pricePerPiece
 const calcPricePerPiece = (weight, price) =>  {
-  let total = (weight /1000 )* price
+  let total = (weight /1000 )* price;
   return Math.round(total);
 }
 
@@ -209,4 +205,12 @@ function price(element){
       return result
     }
   }
+}
+
+const final = (element, nbrQuantity) =>{
+  allPriceUnit = document.getElementsByClassName("total")
+  let stockResult = price(element);
+  totalCart += Math.round(stockResult*nbrQuantity);
+  let final = document.getElementById("finalPrice")
+  final.innerHTML = `Total : ${totalCart} €`
 }
