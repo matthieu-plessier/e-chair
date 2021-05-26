@@ -13,7 +13,7 @@ var totalCart = 0;
 // bouton menu boeuf
 btnBeef.addEventListener('click',function(){
   productsEl.innerHTML = "";
-  fetch('/assets/data/products.json')
+  fetch('assets/data/products.json')
     .then((response) => response.json()) 
     .then((displayCards) => {
       displayCards.products.forEach((element) => { 
@@ -29,7 +29,7 @@ btnBeef.addEventListener('click',function(){
 
 btnPoultry.addEventListener('click',function(){
   productsEl.innerHTML = "";
-    fetch('/assets/data/products.json')
+    fetch('assets/data/products.json')
       .then((response) => response.json()) 
       .then((displayCards) => {
         displayCards.products.forEach((element) => { 
@@ -45,7 +45,7 @@ btnPoultry.addEventListener('click',function(){
 
 btnPork.addEventListener('click',function(){
   productsEl.innerHTML = "";
-    fetch('/assets/data/products.json')
+    fetch('assets/data/products.json')
       .then((response) => response.json()) 
         .then((displayCards) => {
           displayCards.products.forEach((element) => { 
@@ -61,7 +61,7 @@ btnPork.addEventListener('click',function(){
 
 btnHorse.addEventListener('click',function(){
   productsEl.innerHTML = "";
-    fetch('/assets/data/products.json')
+    fetch('assets/data/products.json')
       .then((response) => response.json()) 
         .then((displayCards) => {
           displayCards.products.forEach((element) => { 
@@ -101,7 +101,7 @@ const addToCart = () => {
       let nbrArticle = document.getElementById("nbrTotal")
       let datatest = e.target.dataset.ref;
       let testCart = false;
-      fetch('/assets/data/products.json')
+      fetch('assets/data/products.json')
         .then((response) => response.json())
         .then((displayCards) => {
           displayCards.products.forEach((element, index) => {
@@ -224,7 +224,7 @@ const final = (element, nbrQuantity) =>{
 const unitPrice = () => {
   
   let datatest = stockBtn.target.dataset.ref;
-  fetch('/assets/data/products.json')
+  fetch('assets/data/products.json')
   .then((response) => response.json()) 
   .then((displayCards) => {
     displayCards.products.forEach((element, index) => { 
