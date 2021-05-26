@@ -155,16 +155,13 @@ const addQuantity = (element) => {
 
 // SUPPRESSION QUANTITE
 
- const removeQuantity = (element) =>{
+const removeQuantity = (element) =>{
   let btnMinus = document.querySelector(".btnMinus");
 
   btnMinus.addEventListener("click", function(){
-    let modalEl = document.getElementById("cart");
-   let quantityVerif = document.getElementById(element.ref);
-   console.log(quantityVerif);
-   quantityVerif.innerHTML--;
-     if(quantityVerif==0){
-      
-     }
+    let quantityVerif = document.getElementById(element.ref);
+    if(quantityVerif.innerHTML>0){
+      quantityVerif.innerHTML--;
+    }
   });
 }
