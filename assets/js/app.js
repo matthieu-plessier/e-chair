@@ -177,22 +177,11 @@ const addQuantity = (element, index) => {
 }
 
 // SUPPRESSION QUANTITE
-<<<<<<< HEAD
-
-const removeQuantity = (element) =>{
-  let btnMinus = document.querySelector(".btnMinus");
-
-  btnMinus.addEventListener("click", function(){
-    let quantityVerif = document.getElementById(element.ref);
-    if(quantityVerif.innerHTML>0){
-      quantityVerif.innerHTML--;
-    }
-=======
  const removeQuantity = (element, index) =>{
   let btnMinus = document.querySelector(`#btnMinus${index}`);
 
   btnMinus.addEventListener("click", function(){
-    let modalEl = document.getElementById("cart");
+    
    let quantityVerif = document.getElementById(element.ref);
    let nbrArticle = document.getElementById("nbrTotal")
    quantityVerif.innerHTML--;
@@ -200,9 +189,8 @@ const removeQuantity = (element) =>{
    Total(element, index);
     if(quantityVerif.innerHTML<=0){
       quantityVerif.innerHTML = 0;
-      nbrArticle.innerHTML = 0;
+       nbrArticle.innerHTML = 0;
      }
->>>>>>> origin/dev
   });
 }
 
