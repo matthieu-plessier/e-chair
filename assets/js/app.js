@@ -76,11 +76,12 @@ btnHorse.addEventListener('click',function(){
 // fonction affichage d'une carte
 
 const displayCard = (element)=>{
-  let card = `<div class="col-4 card ml-2 mt-4 mb-4" style="width: 20rem;height:32rem;"><div class="">
+  let card = `<div class="col-4 card ml-2 mt-4 mb-5 pb-2" style="width: 20rem;height:32rem;"><div class="">
     <img src="${element.img_src}" class="card-img-top "></div>
     <div class="card-body color">
-      <h5 class="card-title">${element.title}</h5>
+      <h5 class="card-title">${element.title} ${element.weight}Gr</h5>
       <p class="card-text ">${element.desc}</p>
+      <p>Prix au kilo : ${element.price} €</p>
       <button class="btnColor" data-ref="${element.ref}" >ajouter au panier</button>
     </div>
   </div>`;
